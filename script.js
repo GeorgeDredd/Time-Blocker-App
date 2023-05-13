@@ -30,21 +30,23 @@ let timerId;
 
 function countdown() { 
     endTime(new Date("June 18 2023"), 0);
-    endTime(new Date("May 10 2023 05:00:00"), 1);
+    endTime(new Date("May 12 2023 07:10:00"), 1);
+    endTime(new Date("May 16 2023 00:00:00"), 2);
 }
 
 let endTime = (end, index) => {     
     // To repeatedly get today in seconds
     const currentDate = new Date();
     // returns in milli seconds
-    const timeLeft = end - currentDate;
+    let timeLeft = [];
+    timeLeft[index] = end - currentDate;
 
     // Method-1
-    let secsLeft = Math.floor((timeLeft % minute) / second);   
-    let minsLeft = Math.floor((timeLeft % hour) / minute);  
-    let hrsLeft = Math.floor((timeLeft % day) / hour);  
-    let daysLeft = Math.floor((timeLeft % week) / day);
-    let weeksLeft = Math.floor(timeLeft / week);
+    let secsLeft = Math.floor((timeLeft[index] % minute) / second);   
+    let minsLeft = Math.floor((timeLeft[index] % hour) / minute);  
+    let hrsLeft = Math.floor((timeLeft[index] % day) / hour);  
+    let daysLeft = Math.floor((timeLeft[index] % week) / day);
+    let weeksLeft = Math.floor(timeLeft[index] / week);
 
 
     // // Method-2     
@@ -73,9 +75,14 @@ let endTime = (end, index) => {
 
 
     
-    if (timeLeft <= 0) {
-        countCon[index].innerHTML = '<h1 class="number">Time Up!!!</h1>';
-        // clearInterval(timerId);
+    if (timeLeft[index] <= 0) {
+        // let h1 = document.createElement("h1")
+        // h1.textContent = "Time Up!!!"
+        // countCon[index].appendChild(h1); 
+        delete countCon[index];
+        // msg.innerHTML = "<h1 class='number'>Time Up</h1>"; 
+        clearInterval(timerId);
+
     }
     else {
         // Add to Html
@@ -84,6 +91,7 @@ let endTime = (end, index) => {
         hours[index].innerHTML = formatTime(hrsLeft)
         mins[index].innerHTML = formatTime(minsLeft);
         secs[index].innerHTML = formatTime(secsLeft);
+        timerId = setInterval(countdown, 1000);
     }
 }
 
