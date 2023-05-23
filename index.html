@@ -5,103 +5,131 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Timer</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
-    <div class="container">
-        <div id="twelveWeekYr">
-            <h1>12 WEEKS YEAR</h1>
-    
-            <div class="countdownContainer">
-                <div class="countdown weeksDiv">
-                    <p class="number weeks">0</p>
-                    <span>weeks</span>
-                </div>
-                <div class="countdown daysDiv">
-                    <p class="number days">0</p>
-                    <span>days</span>
-                </div>
-                <div class="countdown hoursDiv">
-                    <p class="number hours">0</p>
-                    <span>hours</span>
-                </div>
-                <div class="countdown minsDiv">
-                    <p class="number mins">0</p>
-                    <span>mins</span>
-                </div>
-                <div class="countdown secsDiv">
-                    <p class="number secs">0</p>
-                    <span>secs</span>
-                </div>
-            </div>
-        </div>
-    
-        <div ="today">
-            <h1>TODAY</h1>
-    
-            <div class="countdownContainer">
-                <div class="countdown weeksDiv">
-                    <p class="number weeks">0</p>
-                    <span>weeks</span>
-                </div>
-                <div class="countdown daysDiv">
-                    <p class="number days">0</p>
-                    <span>days</span>
-                </div>
-                <div class="countdown hoursDiv">
-                    <p class="number hours">0</p>
-                    <span>hours</span>
-                </div>
-                <div class="countdown minsDiv">
-                    <p class="number mins">0</p>
-                    <span>mins</span>
-                </div>
-                <div class="countdown secsDiv">
-                    <p class="number secs">0</p>
-                    <span>secs</span>
-                </div>
-            </div>
-        </div>
+    <div class="container min-vh-100">
+        <form action="" class="form col-md-6 mx-auto  my-5">
+            <label for="datetime" class="form-label h1 text-center w-100">Choose Time Block <i class="fa-solid fa-clock-rotate-left fa-beat-fade" style="--fa-animation-duration: 5s; "></i></label>
+            
 
+            <div class="form-floating">
+                <input type="text" name="taskTitle" id="taskTitle" placeholder="Enter title" class="form-control my-2 bg-dark text-white">
+                <label for="taskTitle" class="form-label text-white">Enter title</label>
+            </div>
+            <input  type="datetime-local" name="datetime" id="datetime-local" class="form-control bg-dark text-white" >
 
-        <div class="today">
-            <h1>RETREAT</h1>
-    
-            <div class="countdownContainer">
-                <div class="countdown weeksDiv">
-                    <p class="number weeks">0</p>
-                    <span>weeks</span>
-                </div>
-                <div class="countdown daysDiv">
-                    <p class="number days">0</p>
-                    <span>days</span>
-                </div>
-                <div class="countdown hoursDiv">
-                    <p class="number hours">0</p>
-                    <span>hours</span>
-                </div>
-                <div class="countdown minsDiv">
-                    <p class="number mins">0</p>
-                    <span>mins</span>
-                </div>
-                <div class="countdown secsDiv">
-                    <p class="number secs">0</p>
-                    <span>secs</span>
+            <input type="submit" id="submitBtn" class="d-block btn btn-dark mt-3 w-75 mx-auto">
+
+        </form>
+
+        <div class="row justify-content-center gy-5" id="containerRow">
+            <!-- <div id="twelveWeekYr">
+            
+                <h1>12 WEEKS YEAR</h1>
+        
+                <div class="countdownContainer">
+                    <div class="countdown weeksDiv">
+                        <p class="number weeks">0</p>
+                        <span>weeks</span>
+                    </div>
+                    <div class="countdown daysDiv">
+                        <p class="number days">0</p>
+                        <span>days</span>
+                    </div>
+                    <div class="countdown hoursDiv">
+                        <p class="number hours">0</p>
+                        <span>hours</span>
+                    </div>
+                    <div class="countdown minsDiv">
+                        <p class="number mins">0</p>
+                        <span>mins</span>
+                    </div>
+                    <div class="countdown secsDiv">
+                        <p class="number secs">0</p>
+                        <span>secs</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        
+            <div class="today">
+                <h1>TODAY</h1>
+        
+                <div class="countdownContainer">
+                    <div class="countdown weeksDiv">
+                        <p class="number weeks">0</p>
+                        <span>weeks</span>
+                    </div>
+                    <div class="countdown daysDiv">
+                        <p class="number days">0</p>
+                        <span>days</span>
+                    </div>
+                    <div class="countdown hoursDiv">
+                        <p class="number hours">0</p>
+                        <span>hours</span>
+                    </div>
+                    <div class="countdown minsDiv">
+                        <p class="number mins">0</p>
+                        <span>mins</span>
+                    </div>
+                    <div class="countdown secsDiv">
+                        <p class="number secs">0</p>
+                        <span>secs</span>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="Projets">
+                <h1>15 DAYS OF JS</h1>
+        
+                <div class="countdownContainer">
+                    <div class="countdown weeksDiv">
+                        <p class="number weeks">0</p>
+                        <span>weeks</span>
+                    </div>
+                    <div class="countdown daysDiv">
+                        <p class="number days">0</p>
+                        <span>days</span>
+                    </div>
+                    <div class="countdown hoursDiv">
+                        <p class="number hours">0</p>
+                        <span>hours</span>
+                    </div>
+                    <div class="countdown minsDiv">
+                        <p class="number mins">0</p>
+                        <span>mins</span>
+                    </div>
+                    <div class="countdown secsDiv">
+                        <p class="number secs">0</p>
+                        <span>secs</span>
+                    </div>
+                </div>
+            </div> -->
+        </div> 
+
+        <div class="info fw-bold text-center my-5 mx-auto bg-black text-white col-sm-10 h4 p-2">
+            "We lack a sense of urgency, not
+            realizing that every week is important, every day is important,
+            every moment is important. Ultimately, effective execution
+            happens daily and weekly!"
+        </div>        
     </div>
-    
-   
 
-    <div class="info">
-        "We lack a sense of urgency, not
-        realizing that every week is important, every day is important,
-        every moment is important. Ultimately, effective execution
-        happens daily and weekly!"
-    </div>
     
+    <footer class="d-flex flex-column justify-content-center align-items-center bg-danger text-white pt-1 position-sticky bottom-0 w-100">
+        <p>Designed by George <i class="fa-regular fa-smile" aria-hidden="true"></i> </p>
+        <p>Inspired by the book 12 Week Yr.</p>
+
+    </footer>
+
+             
+
+    <script src="script.js"></script>
+
 </body>
 </html>

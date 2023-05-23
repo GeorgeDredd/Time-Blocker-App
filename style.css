@@ -17,76 +17,32 @@ html {
 body {
     font-family: "Poppins", sans-serif;
     margin: 0;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background-image: url("./snow.jpg");
     background-size: cover;
     background-position: center;
-    padding: 5px 0;
 }
 
-.container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-
-.container >  div {
-    flex-basis: 50%;
-    padding: 10px;
-}
-
-h1{
-    font-size: 4rem;
-    font-weight: normal;
-    text-align: center;
-
-}
 
 /* COUNTDOWN */
 
 .countdownContainer {
-    display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: center;
-    align-items: center;
     box-shadow: 0px 0px 10px #888888;
     height: 200px;
-    /* transform: scale(.7); */
 }
 
 .countdownContainer .number{
     font-size: 2.5rem;
     line-height: 1;
-    /* margin: 1rem 2rem; */
 }
 
 .countdown {
     text-align: center;
     font-weight: bold;
     flex-basis: 100%;
-    /* flex-basis: 10px; */
 
 }
 
 .countdown span{
     font-size: 1rem;
-}
-
-.info {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    width: 80%;
-    margin: 20px auto;
-    background-color: #000;
-    color: #fff;
-}
-
-@media only screen and (max-width: 992px) {
-    .container div {
-        flex-basis: 100%;
-    }
-    
 }

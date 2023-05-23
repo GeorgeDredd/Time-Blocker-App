@@ -3,6 +3,12 @@ const classes = (classesName) => {
 }
 
 
+const containerRow = document.getElementById("containerRow");
+const dateTime = document.getElementById("datetime-local");
+const taskTitle = document.getElementById("taskTitle")
+const submitBtn = document.getElementById("submitBtn");
+
+
 const secs = classes("secs");
 const mins = classes("mins");
 const hours = classes("hours");
@@ -19,20 +25,54 @@ const week = day * 7;
 let timerId;
 
 
-// Array.from(weeks).forEach((week) => {
-//     console.log(week);
-// })
+let countdownDiv = [];
 
-// for (let week of weeks) {
-//     console.log(week);
-// }
-
-
-function countdown() { 
-    endTime(new Date("June 18 2023"), 0);
-    endTime(new Date("May 12 2023 07:10:00"), 1);
-    endTime(new Date("May 16 2023 00:00:00"), 2);
+function createCountdown() {
+    if (taskTitle.value && dateTime.value) {
+        let div = document.createElement("div");
+        div.setAttribute("class", "col-md-6");
+        div.innerHTML = `
+                        <h1 class="text-center">${taskTitle.value.charAt(0).toUpperCase() + taskTitle.value.slice(1)}</h1>                    
+                        <div class="countdownContainer d-flex justify-content-center align-items-center">
+                            <div class="countdown weeksDiv">
+                                <p class="number weeks">0</p>
+                                <span>weeks</span> 
+                            </div>
+                            <div class="countdown daysDiv">
+                                <p class="number days">0</p>
+                                <span>days</span>
+                            </div>
+                            <div class="countdown hoursDiv">
+                                <p class="number hours">0</p>
+                                <span>hours</span>
+                            </div>
+                            <div class="countdown minsDiv">
+                                <p class="number mins">0</p>
+                                <span>mins</span>
+                            </div>
+                            <div class="countdown secsDiv">
+                                <p class="number secs">0</p>
+                                <span>secs</span>
+                            </div>
+                        </div>   
+        `
+        containerRow.appendChild(div)
+        countdownDiv.push(dateTime.value);
+        timerId = setInterval(countdown, 1000);
+    } else {
+        alert("Please fill in details accordingly");
+        return false;
+    }    
 }
+
+
+function countdown() {
+    countdownDiv.forEach((value, key) => {
+        endTime(new Date(value), key)
+    })
+    
+}
+
 
 let endTime = (end, index) => {     
     // To repeatedly get today in seconds
@@ -48,32 +88,6 @@ let endTime = (end, index) => {
     let daysLeft = Math.floor((timeLeft[index] % week) / day);
     let weeksLeft = Math.floor(timeLeft[index] / week);
 
-
-    // // Method-2     
-    //  let weeksLeft = Math.floor(timeLeft / 1000 / 60 / 60 / 24 /7);
-    //  let daysLeft = Math.floor(timeLeft / 1000 / 60 / 60 / 24) % 7;
-    //  let hrsLeft = Math.floor(timeLeft / 1000 / 60 / 60) % 24;
-    //  let minsLeft = Math.floor(timeLeft / 1000 / 60) % 60;
-    //  let secsLeft = Math.floor(timeLeft / 1000) % 60;
-
-
-
-    // // Method-3
-    // // divide to 1000 to change to seconds
-    // let secsLeft = Math.floor(timeLeft / 1000);   
-    // let minsLeft = Math.floor(secsLeft / 60);  
-    // let hrsLeft = Math.floor(minsLeft / 60);  
-    // let daysLeft = Math.floor(hrsLeft / 24);
-    // let weeksLeft = Math.floor(daysLeft / 7);
-
-    // // Get remainder of division
-    // secsLeft = secsLeft % 60;
-    // minsLeft = minsLeft % 60;
-    // hrsLeft = hrsLeft % 24;
-    // daysLeft = daysLeft % 7;
-    // weeksLeft = weeksLeft;
-
-
     
     if (timeLeft[index] <= 0) {
         // let h1 = document.createElement("h1")
@@ -85,6 +99,9 @@ let endTime = (end, index) => {
 
     }
     else {
+        if (timeLeft[index] <= 30 ) {
+            countCon[index].style.color = "red";
+        }
         // Add to Html
         weeks[index].innerHTML = formatTime(weeksLeft);
         days[index].innerHTML = formatTime(daysLeft);
@@ -101,5 +118,54 @@ function formatTime(time) {
 
 // countdown();
 // call function every 1000 milliseconds i.e 1seconds
-timerId = setInterval(countdown, 1000);
+submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    createCountdown();
+})
 
+
+
+
+
+
+
+
+
+// endTime(new Date(dateTime.value), 0)
+// endTime(new Date("June 18 2023"), 0);
+// endTime(new Date("May 12 2023 07:10:00"), 1);
+// endTime(new Date("June 01 2023 00:00:00"), 2);
+
+
+
+// Array.from(weeks).forEach((week) => {
+//     console.log(week);
+// })
+
+// for (let week of weeks) {
+//     console.log(week);
+// }
+
+
+// // Method-2     
+//  let weeksLeft = Math.floor(timeLeft / 1000 / 60 / 60 / 24 /7);
+//  let daysLeft = Math.floor(timeLeft / 1000 / 60 / 60 / 24) % 7;
+//  let hrsLeft = Math.floor(timeLeft / 1000 / 60 / 60) % 24;
+//  let minsLeft = Math.floor(timeLeft / 1000 / 60) % 60;
+//  let secsLeft = Math.floor(timeLeft / 1000) % 60;
+
+
+// // Method-3
+// // divide to 1000 to change to seconds
+// let secsLeft = Math.floor(timeLeft / 1000);   
+// let minsLeft = Math.floor(secsLeft / 60);  
+// let hrsLeft = Math.floor(minsLeft / 60);  
+// let daysLeft = Math.floor(hrsLeft / 24);
+// let weeksLeft = Math.floor(daysLeft / 7);
+
+// // Get remainder of division
+// secsLeft = secsLeft % 60;
+// minsLeft = minsLeft % 60;
+// hrsLeft = hrsLeft % 24;
+// daysLeft = daysLeft % 7;
+// weeksLeft = weeksLeft;
