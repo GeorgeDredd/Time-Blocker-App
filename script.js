@@ -31,7 +31,7 @@ let timerId;
 function countdown() { 
     endTime(new Date("June 18 2023"), 0);
     endTime(new Date("May 12 2023 07:10:00"), 1);
-    endTime(new Date("May 16 2023 00:00:00"), 2);
+    endTime(new Date("June 01 2023 00:00:00"), 2);
 }
 
 let endTime = (end, index) => {     
